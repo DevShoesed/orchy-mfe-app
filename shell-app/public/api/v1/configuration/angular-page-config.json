@@ -1,0 +1,8 @@
+{
+    "type": "flex-row",
+    "content": [{
+        "type": "micro-frontend",
+        "tag": "angular-mfe",
+        "url": "//localhost:4200/src/main.ts"
+    }]
+}

@@ -1,0 +1,27 @@
+{
+    "microPages": {
+        "/": {
+            "pageConfiguration": "shell-page-config.json",
+            "properties": {
+                "pageName": "Home Page"
+            }
+        },
+        "/angular-mfe": {
+            "pageConfiguration": "angular-page-config.json",
+            "properties": {
+                "pageName": "Angular MFE"
+            }
+            
+        }
+    },
+    "common": {
+        "__stylesheets": [
+          "https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        ],
+        "importMap": {
+            "imports": {
+                "lit-html": "https://unpkg.com/lit-html?module"
+            }
+        }
+    }
+}
