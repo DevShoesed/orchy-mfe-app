@@ -33,7 +33,7 @@ export class VanillaMfeTypeScript extends OrchyMicroFrontend {
         </nav>
         <!-- Page content-->
         <div class="container-fluid">
-          <orchy-wc configurationName="shell-orchy-config.json"></orchy-wc>    
+          <orchy-wc basePath="/" configurationName="shell-orchy-config.json"></orchy-wc>    
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@ export class VanillaMfeTypeScript extends OrchyMicroFrontend {
 
   setupTogleSidebar() {
     const sidebarToggle = document.body.querySelector('#sidebarToggle')
-    console.log(sidebarToggle)
+
     if (sidebarToggle) {
       sidebarToggle.addEventListener('click', event => {
         event.preventDefault()

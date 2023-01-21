@@ -13,15 +13,5 @@
             }
             
         }
-    },
-    "common": {
-        "__stylesheets": [
-          "https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-        ],
-        "importMap": {
-            "imports": {
-                "lit-html": "https://unpkg.com/lit-html?module"
-            }
-        }
     }
 }
