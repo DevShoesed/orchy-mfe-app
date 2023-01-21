@@ -1,17 +1,17 @@
 {
     "microPages": {
-        "/": {
-            "pageConfiguration": "shell-page-config.json",
-            "properties": {
-                "pageName": "Home Page"
-            }
-        },
         "/angular-mfe": {
             "pageConfiguration": "angular-page-config.json",
             "properties": {
                 "pageName": "Angular MFE"
             }
             
+        },
+        "/": {
+            "pageConfiguration": "shell-page-config.json",
+            "properties": {
+                "pageName": "Home Page"
+            }
         }
     }
 }

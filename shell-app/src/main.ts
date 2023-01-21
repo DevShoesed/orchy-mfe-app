@@ -9,6 +9,10 @@ import OrchyMicroFrontend from '@orchy-mfe/spa-adapter'
 
 export class VanillaMfeTypeScript extends OrchyMicroFrontend {
   async mount() {
+    // mfeProperties.eventBus.subscribe((e) => {
+    //   console.log(e)
+    // })
+
     this.getContainer().innerHTML = `
     <div class="d-flex" id="wrapper">
       <!-- Sidebar-->

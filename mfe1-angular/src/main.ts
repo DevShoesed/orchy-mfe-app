@@ -6,7 +6,7 @@ import {MicroFrontendProperties} from '@orchy-mfe/models';
 
 import { AppModule } from './app/app.module';
 import { MicroFrontendPropertiesProvider } from './providers/micro-frontend-properties-provider';
-
+import 'zone.js/dist/zone.js'
 export class AngularMfe extends OrchyMicroFrontend {
   private app?: NgModuleRef<AppModule>
 

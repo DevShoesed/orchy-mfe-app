@@ -3,6 +3,9 @@
     "content": [{
         "type": "micro-frontend",
         "tag": "angular-mfe",
-        "url": "//localhost:4200/src/main.ts"
+        "url": "//localhost:4200/src/main.ts",
+        "properties": {
+            "angularBasePath": "/angular-mfe"
+        }
     }]
 }
