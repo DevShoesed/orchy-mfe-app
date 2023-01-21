@@ -1,0 +1,12 @@
+{
+    "type": "flex-column",
+    "content": [
+        {
+            "type": "element",
+            "tag": "span",
+            "properties": {
+                "innerHTML": "Parent"
+            }
+        }
+    ]
+}
