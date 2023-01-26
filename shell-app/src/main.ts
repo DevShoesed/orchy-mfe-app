@@ -1,13 +1,10 @@
 import './style.css'
-// import viteLogo from './assets/vite.svg?raw'
-// import typescriptLogo from './assets/typescript.svg?raw'
-// import {setupCounter} from './counter'
 
 import '@orchy-mfe/web-component'
 
 import OrchyMicroFrontend from '@orchy-mfe/spa-adapter'
-import MyEventBus, {MyEvent} from './types/myEventBus'
-import {createMenuApi} from './plugin/menuPlugin'
+import MyEventBus from './types/myEventBus'
+import {createMenuApi} from 'orchy-menu-plugin/dist'
 
 
 
@@ -17,7 +14,7 @@ import {createMenuApi} from './plugin/menuPlugin'
 export class VanillaMfeTypeScript extends OrchyMicroFrontend {
   async mount() {
     
-    const eventBus:MyEventBus<MyEvent> = new MyEventBus<MyEvent>()
+    const eventBus:MyEventBus<unknown> = new MyEventBus<unknown>()
     
      /* Create and subscribe menuApi */
      const menuApi = createMenuApi(eventBus)
@@ -66,7 +63,7 @@ export class VanillaMfeTypeScript extends OrchyMicroFrontend {
     document.querySelector('#content-container')?.appendChild(orchyWc)
 
 
-   
+   /* Menu Plugin */
     menuApi.menuItems$.subscribe(
       {
         next: (menu) => {

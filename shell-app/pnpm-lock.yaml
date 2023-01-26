@@ -11,6 +11,7 @@ specifiers:
   eslint-config-prettier: ^8.6.0
   eslint-plugin-prettier: ^4.2.1
   happy-dom: ^8.1.5
+  orchy-menu-plugin: ^0.0.2
   rollup-plugin-visualizer: ^5.9.0
   rxjs: ^7.8.0
   typescript: ^4.9.4
@@ -21,6 +22,7 @@ specifiers:
 dependencies:
   '@orchy-mfe/spa-adapter': 0.1.1
   '@orchy-mfe/web-component': 0.4.0
+  orchy-menu-plugin: 0.0.2
   rxjs: 7.8.0
 
 devDependencies:
@@ -1426,6 +1428,12 @@ packages:
       type-check: 0.4.0
       word-wrap: 1.2.3
     dev: true
+
+  /orchy-menu-plugin/0.0.2:
+    resolution: {integrity: sha512-PXwF4zww0oI5xgX2iHrft97Mpxqu72kB3a/lmRh5UAO4cxcY670zpH9myBsIPC9XvEW/9/mGDAREN42Jdh/Yvw==}
+    dependencies:
+      rxjs: 7.8.0
+    dev: false
 
   /p-limit/3.1.0:
     resolution: {integrity: sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==}
