@@ -6,44 +6,85 @@ import './style.css'
 import '@orchy-mfe/web-component'
 
 import OrchyMicroFrontend from '@orchy-mfe/spa-adapter'
+import MyEventBus, {MyEvent} from './types/myEventBus'
+import {createMenuApi} from './plugin/menuPlugin'
+
+
+
+
+
 
 export class VanillaMfeTypeScript extends OrchyMicroFrontend {
   async mount() {
-    // mfeProperties.eventBus.subscribe((e) => {
-    //   console.log(e)
-    // })
-
+    
+    const eventBus:MyEventBus<MyEvent> = new MyEventBus<MyEvent>()
+    
+     /* Create and subscribe menuApi */
+     const menuApi = createMenuApi(eventBus)
+    
+    
     this.getContainer().innerHTML = `
     <div class="d-flex" id="wrapper">
       <!-- Sidebar-->
       <div class="border-end bg-white" id="sidebar-wrapper">
         <div class="sidebar-heading border-bottom bg-light">orchy-mfe POC</div>
-        <div class="list-group list-group-flush">
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/">Home</a>
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/angular-mfe">Angular</a>
+        <div class="list-group list-group-flush" id="menuContainer">
+            
+          
         </div>
       </div>
       <!-- Page content wrapper-->
       <div id="page-content-wrapper">
         <!-- Top navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <nav class="navbar navbar-expand-xl navbar-light bg-light border-bottom">
           <div class="container-fluid">
-            <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
+            <button id="sidebarToggle" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/angular-mfe">Angular MFE</a></li>
+              </ul> 
             </div>
           </div>
         </nav>
         <!-- Page content-->
-        <div class="container-fluid">
-          <orchy-wc basePath="/" configurationName="shell-orchy-config.json"></orchy-wc>    
+        <div id="content-container" class="container-fluid">
+          
         </div>
       </div>
     </div>
     `
     this.setupTogleSidebar()
-    // setupCounter(document.querySelector('#counter') as HTMLButtonElement)
+
+    /* Create and mount orchy WebComponent */ 
+    const orchyWc = document.createElement('orchy-wc')
+    orchyWc.setAttribute('id', 'orchy-wc')
+    orchyWc.setAttribute('basePath', '/')
+    orchyWc.setAttribute('configurationName', 'shell-orchy-config.json')
+
+    orchyWc.eventBus = eventBus
+    document.querySelector('#content-container')?.appendChild(orchyWc)
+
+
+   
+    menuApi.menuItems$.subscribe(
+      {
+        next: (menu) => {
+          const menuContainer = document.getElementById('menuContainer')
+          if(menuContainer){
+              menuContainer.innerHTML = ''
+              menu.forEach((m) => {
+                  const newLink = document.createElement('a')
+                  newLink.innerHTML = m.label
+                  newLink.href = m.url
+                  newLink.className = 'list-group-item list-group-item-action list-group-item-light p-3'
+                  document.getElementById('menuContainer')?.appendChild(newLink)
+                })
+          }
+        }
+ 
+      })
+
   }
 
   setupTogleSidebar() {
@@ -60,6 +101,7 @@ export class VanillaMfeTypeScript extends OrchyMicroFrontend {
   
   async unmount() {
     this.getContainer().innerHTML = ''
+    eventBus.unsubscribe()
   }
 }
 

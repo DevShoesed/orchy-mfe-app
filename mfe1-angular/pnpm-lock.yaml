@@ -22,6 +22,7 @@ specifiers:
   karma-coverage: ~2.2.0
   karma-jasmine: ~5.1.0
   karma-jasmine-html-reporter: ~2.0.0
+  orchy-menu-plugin: ^0.0.2
   rollup-plugin-visualizer: ^5.9.0
   rxjs: ~7.8.0
   tslib: ^2.4.1
@@ -39,6 +40,7 @@ dependencies:
   '@angular/platform-browser-dynamic': 15.1.1_hbzc5xw3mja47ogky4se7iwkze
   '@angular/router': 15.1.1_iaxnlggfwmbt7aywxhi6wdgvje
   '@orchy-mfe/spa-adapter': 0.1.1
+  orchy-menu-plugin: 0.0.2
   rxjs: 7.8.0
   tslib: 2.4.1
   zone.js: 0.12.0
@@ -5292,6 +5294,12 @@ packages:
       strip-ansi: 6.0.1
       wcwidth: 1.0.1
     dev: true
+
+  /orchy-menu-plugin/0.0.2:
+    resolution: {integrity: sha512-PXwF4zww0oI5xgX2iHrft97Mpxqu72kB3a/lmRh5UAO4cxcY670zpH9myBsIPC9XvEW/9/mGDAREN42Jdh/Yvw==}
+    dependencies:
+      rxjs: 7.8.0
+    dev: false
 
   /os-tmpdir/1.0.2:
     resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}

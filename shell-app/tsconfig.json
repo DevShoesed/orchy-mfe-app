@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
+    "useDefineForClassFields": false,
     "lib": ["ESNext", "DOM"],
+    "module": "ESNext",
     "moduleResolution": "Node",
     "strict": true,
     "sourceMap": true,
