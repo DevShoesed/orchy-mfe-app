@@ -4,7 +4,7 @@ import '@orchy-mfe/web-component'
 
 import OrchyMicroFrontend from '@orchy-mfe/spa-adapter'
 import MyEventBus from './types/myEventBus'
-import {createMenuApi} from 'orchy-menu-plugin/dist'
+import {createMenuApi} from 'orchy-menu-plugin'
 
 
 

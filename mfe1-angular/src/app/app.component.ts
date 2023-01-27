@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MicroFrontendPropertiesProvider } from '../providers/micro-frontend-properties-provider';
-import { createMenuApi,OrchyMenuApi } from 'orchy-menu-plugin/dist/index';
+import {createMenuApi,OrchyMenuApi} from 'orchy-menu-plugin'
+import { MenuItem } from 'orchy-menu-plugin/types/models';
 @Component({
   selector: 'angular-mfe',
   templateUrl: './app.component.html',
@@ -9,6 +10,8 @@ import { createMenuApi,OrchyMenuApi } from 'orchy-menu-plugin/dist/index';
 export class AppComponent {
   title = 'orchy-angular-typescript-template';
   orchyMenuApi!:OrchyMenuApi
+  menuItemDashBoard!:MenuItem
+  menuItemPage1!:MenuItem
 
   constructor(
     @Inject(MicroFrontendPropertiesProvider) private microforntendProperties:MicroFrontendPropertiesProvider
@@ -17,25 +20,22 @@ export class AppComponent {
   }
   
   ngOnInit() {
-    
+    this.menuItemDashBoard = {label: 'Dashboard', url: '/angular-mfe/dashboard', name: 'dashboard', microfrontend: 'angular-mfe'}
+    this.menuItemPage1 = {label: 'Page 1', url: '/angular-mfe/page1', name: 'page-1', microfrontend: 'angular-mfe'}
+
     this.microforntendProperties.eventBus.next({
       message: 'Angular MFE is loaded'
     })
 
-    this.orchyMenuApi.registerMenu({
-      label: 'Dashboard', url: '/angular-mfe/dashboard', name: 'dashboard', microfrontend: 'angular-mfe'
-    })
-
-    this.orchyMenuApi.registerMenu({
-      label: 'Page 1', url: '/angular-mfe/page1', name: 'page-1', microfrontend: 'angular-mfe'
-    })
-
+    this.orchyMenuApi.registerMenu(this.menuItemDashBoard)
+    this.orchyMenuApi.registerMenu(this.menuItemPage1)
     
   }
 
   ngOnDestroy() {
-    this.orchyMenuApi.unregisterMenu({label: 'Dashboard', url: '/angular-mfe/dashboard', name: 'dashboard', microfrontend: 'angular-mfe'})
-    this.orchyMenuApi.unregisterMenu({label: 'Page 1', url: '/angular-mfe/page1', name: 'page-1', microfrontend: 'angular-mfe'})
+    
+    this.orchyMenuApi.unregisterMenu(this.menuItemDashBoard)
+    this.orchyMenuApi.unregisterMenu(this.menuItemPage1)
     this.microforntendProperties.eventBus.unsubscribe();
   }
   
